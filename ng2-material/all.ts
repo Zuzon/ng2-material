@@ -54,13 +54,16 @@ export * from './components/switcher/switch';
 import {MdSubheader} from "./components/subheader/subheader";
 export * from './components/subheader/subheader';
 
+import {MdSidenav, MdSidenavContainer} from './components/sidenav/sidenav';
+import {SidenavService} from './components/sidenav/sidenav_service';
+export * from './components/sidenav/sidenav';
+
 import {MdToolbar} from './components/toolbar/toolbar';
 export * from './components/toolbar/toolbar';
 
 import {MdTabs, MdTab} from './components/tabs/tabs';
 import {UrlResolver} from "angular2/compiler";
 import {Media} from "./core/util/media";
-export * from './components/toolbar/toolbar';
 
 /**
  * Collection of Material Design component directives.
@@ -81,6 +84,7 @@ export const MATERIAL_DIRECTIVES: Type[] = CONST_EXPR([
   MdProgressLinear,
   MdProgressCircular,
   MdRadioButton, MdRadioGroup,
+  MdSidenav, MdSidenavContainer,
   MdSubheader,
   MdSwitch,
   MdToolbar,
@@ -93,6 +97,7 @@ export const MATERIAL_DIRECTIVES: Type[] = CONST_EXPR([
 export const MATERIAL_PROVIDERS: any[] = [
   MdDialog,
   Media,
+  SidenavService,
   MdRadioDispatcher,
   INPUT_VALIDATORS
 ];

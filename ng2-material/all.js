@@ -36,11 +36,13 @@ var switch_1 = require('./components/switcher/switch');
 __export(require('./components/switcher/switch'));
 var subheader_1 = require("./components/subheader/subheader");
 __export(require('./components/subheader/subheader'));
+var sidenav_1 = require('./components/sidenav/sidenav');
+var sidenav_service_1 = require('./components/sidenav/sidenav_service');
+__export(require('./components/sidenav/sidenav'));
 var toolbar_1 = require('./components/toolbar/toolbar');
 __export(require('./components/toolbar/toolbar'));
 var tabs_1 = require('./components/tabs/tabs');
 var media_1 = require("./core/util/media");
-__export(require('./components/toolbar/toolbar'));
 exports.MATERIAL_DIRECTIVES = lang_1.CONST_EXPR([
     button_1.MdAnchor, button_1.MdButton,
     checkbox_1.MdCheckbox,
@@ -57,6 +59,7 @@ exports.MATERIAL_DIRECTIVES = lang_1.CONST_EXPR([
     progress_linear_1.MdProgressLinear,
     progress_circular_1.MdProgressCircular,
     radio_button_1.MdRadioButton, radio_button_1.MdRadioGroup,
+    sidenav_1.MdSidenav, sidenav_1.MdSidenavContainer,
     subheader_1.MdSubheader,
     switch_1.MdSwitch,
     toolbar_1.MdToolbar,
@@ -65,6 +68,7 @@ exports.MATERIAL_DIRECTIVES = lang_1.CONST_EXPR([
 exports.MATERIAL_PROVIDERS = [
     dialog_2.MdDialog,
     media_1.Media,
+    sidenav_service_1.SidenavService,
     radio_dispatcher_1.MdRadioDispatcher,
     validators_1.INPUT_VALIDATORS
 ];

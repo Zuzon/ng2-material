@@ -25,29 +25,63 @@ var navigation_1 = require("./services/navigation");
 var version_1 = require("./services/version");
 var view_listener_1 = require('angular2/src/core/linker/view_listener');
 var common_dom_1 = require('angular2/platform/common_dom');
+var sidenav_service_1 = require("ng2-material/components/sidenav/sidenav_service");
+var media_1 = require("ng2-material/core/util/media");
+var core_3 = require("angular2/core");
+var core_4 = require("angular2/core");
 var DemosApp = (function () {
-    function DemosApp(http, navigation) {
+    function DemosApp(http, navigation, media, changeDetection, _components, _sidenav) {
         var _this = this;
         this.navigation = navigation;
+        this.media = media;
+        this.changeDetection = changeDetection;
+        this._components = _components;
+        this._sidenav = _sidenav;
+        this.fullPage = media_1.Media.hasMedia(DemosApp.SIDE_MENU_BREAKPOINT);
         this.site = 'Angular2 Material';
+        this.components = [];
+        this._subscription = null;
+        var query = media_1.Media.getQuery(DemosApp.SIDE_MENU_BREAKPOINT);
+        this._subscription = media.listen(query).onMatched.subscribe(function (mql) {
+            _this.fullPage = mql.matches;
+            changeDetection.detectChanges();
+        });
         http.get('public/version.json')
             .subscribe(function (res) {
             _this.version = res.json().version;
         });
+        this._components.getComponents()
+            .then(function (comps) {
+            _this.components = comps;
+        });
     }
+    DemosApp.prototype.ngOnDestroy = function () {
+        this._subscription.unsubscribe();
+    };
+    DemosApp.prototype.showMenu = function (event) {
+        this._sidenav.show('menu');
+    };
+    DemosApp.SIDE_MENU_BREAKPOINT = 'gt-md';
+    __decorate([
+        core_3.Input(), 
+        __metadata('design:type', Boolean)
+    ], DemosApp.prototype, "fullPage", void 0);
     DemosApp = __decorate([
         router_2.RouteConfig([
             { path: '/', name: 'Index', component: index_1.IndexPage, useAsDefault: true },
             { path: '/components/:id', name: 'Component', component: component_1.ComponentPage }
         ]),
         core_1.Component({
-            selector: 'demos-app'
+            selector: 'demos-app',
+            host: {
+                '[class.push-menu]': 'fullPage'
+            }
         }),
         core_1.View({
             templateUrl: 'examples/app.html',
             directives: [all_1.MATERIAL_DIRECTIVES, router_2.ROUTER_DIRECTIVES, example_1.default, all_2.DEMO_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [http_1.Http, navigation_1.NavigationService])
+        __metadata('design:paramtypes', [http_1.Http, navigation_1.NavigationService, media_1.Media, core_4.ChangeDetectorRef, components_1.ComponentsService, sidenav_service_1.SidenavService])
     ], DemosApp);
     return DemosApp;
 })();

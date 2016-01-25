@@ -1,32 +1,45 @@
 var dom_adapter_1 = require('angular2/src/platform/dom/dom_adapter');
+var async_1 = require("angular2/src/facade/async");
 var Animate = (function () {
     function Animate() {
     }
     Animate.enter = function (el, cssClass) {
         dom_adapter_1.DOM.removeClass(el, cssClass);
         return new Promise(function (resolve) {
-            var duration = Animate.getTransitionDuration(el, true);
-            var callTimeout = setTimeout(function () { return done(); }, duration);
-            var done = function () {
-                clearTimeout(callTimeout);
-                removeListener();
-                resolve();
-            };
-            var removeListener = dom_adapter_1.DOM.onAndCancel(el, Animate.TRANSITION_EVENT, done);
-            dom_adapter_1.DOM.addClass(el, cssClass);
+            dom_adapter_1.DOM.addClass(el, cssClass + '-add');
+            async_1.TimerWrapper.setTimeout(function () {
+                var duration = Animate.getTransitionDuration(el, true);
+                var callTimeout = setTimeout(function () { return done(); }, duration);
+                var done = function () {
+                    dom_adapter_1.DOM.removeClass(el, cssClass + '-add-active');
+                    dom_adapter_1.DOM.removeClass(el, cssClass + '-add');
+                    clearTimeout(callTimeout);
+                    removeListener();
+                    resolve();
+                };
+                var removeListener = dom_adapter_1.DOM.onAndCancel(el, Animate.TRANSITION_EVENT, done);
+                dom_adapter_1.DOM.addClass(el, cssClass + '-add-active');
+                dom_adapter_1.DOM.addClass(el, cssClass);
+            }, 1);
         });
     };
     Animate.leave = function (el, cssClass) {
         return new Promise(function (resolve) {
-            var duration = Animate.getTransitionDuration(el, true);
-            var callTimeout = setTimeout(function () { return done(); }, duration);
-            var done = function () {
-                clearTimeout(callTimeout);
-                removeListener();
-                resolve();
-            };
-            var removeListener = dom_adapter_1.DOM.onAndCancel(el, Animate.TRANSITION_EVENT, done);
-            dom_adapter_1.DOM.removeClass(el, cssClass);
+            dom_adapter_1.DOM.addClass(el, cssClass + '-remove');
+            async_1.TimerWrapper.setTimeout(function () {
+                var duration = Animate.getTransitionDuration(el, true);
+                var callTimeout = setTimeout(function () { return done(); }, duration);
+                var done = function () {
+                    dom_adapter_1.DOM.removeClass(el, cssClass + '-remove-active');
+                    dom_adapter_1.DOM.removeClass(el, cssClass + '-remove');
+                    clearTimeout(callTimeout);
+                    removeListener();
+                    resolve();
+                };
+                var removeListener = dom_adapter_1.DOM.onAndCancel(el, Animate.TRANSITION_EVENT, done);
+                dom_adapter_1.DOM.addClass(el, cssClass + '-remove-active');
+                dom_adapter_1.DOM.removeClass(el, cssClass);
+            }, 1);
         });
     };
     Animate.getTransitionDuration = function (element, includeDelay) {

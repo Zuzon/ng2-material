@@ -40,7 +40,7 @@ var MediaListener = (function () {
         this._media = _media;
         this.onMatched = new core_3.EventEmitter();
         this._destroyed = false;
-        this._listener = function (mql) { return _this.onMatched.emit(query); };
+        this._listener = function (mql) { return _this.onMatched.emit(mql); };
         this._mql.addListener(this._listener);
     }
     Object.defineProperty(MediaListener.prototype, "matches", {
@@ -87,6 +87,9 @@ var Media = (function () {
             cached.references--;
             delete this._cache[listener.query];
         }
+    };
+    Media.prototype.hasMedia = function (size) {
+        return Media.hasMedia(size);
     };
     Media.hasMedia = function (size) {
         var query = Media.getQuery(size);

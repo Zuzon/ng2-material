@@ -22,6 +22,13 @@ import {AfterViewInit} from "angular2/core";
 import {VersionService} from "./services/version";
 import { AppViewListener } from 'angular2/src/core/linker/view_listener';
 import { DebugElementViewListener } from 'angular2/platform/common_dom';
+import {SidenavService} from "ng2-material/components/sidenav/sidenav_service";
+import {IComponentMeta} from "./services/components";
+import {Media} from "ng2-material/core/util/media";
+import {Input} from "angular2/core";
+import {OnDestroy} from "angular2/core";
+import {TimerWrapper} from "angular2/src/facade/async";
+import {ChangeDetectorRef} from "angular2/core";
 
 /**
  * Describe an example that can be dynamically loaded.
@@ -40,25 +47,59 @@ export interface IExampleData {
 ])
 
 @Component({
-  selector: 'demos-app'
+  selector: 'demos-app',
+  host: {
+    '[class.push-menu]': 'fullPage'
+  }
 })
 @View({
   templateUrl: 'examples/app.html',
   directives: [MATERIAL_DIRECTIVES, ROUTER_DIRECTIVES, Example, DEMO_DIRECTIVES]
 })
-export class DemosApp {
+export class DemosApp implements OnDestroy {
 
-  public site:string = 'Angular2 Material';
+  static SIDE_MENU_BREAKPOINT: string = 'gt-md';
 
-  meta: any;
+  @Input()
+  fullPage: boolean = Media.hasMedia(DemosApp.SIDE_MENU_BREAKPOINT);
+
+  public site: string = 'Angular2 Material';
 
   version: string;
 
-  constructor(http: Http, public navigation: NavigationService) {
+  components: IComponentMeta[] = [];
+
+  private _subscription = null;
+
+  constructor(http: Http,
+              public navigation: NavigationService,
+              public media: Media,
+              public changeDetection:ChangeDetectorRef,
+              private _components: ComponentsService,
+              private _sidenav: SidenavService) {
+    let query = Media.getQuery(DemosApp.SIDE_MENU_BREAKPOINT);
+    this._subscription = media.listen(query).onMatched.subscribe((mql: MediaQueryList) => {
+      this.fullPage = mql.matches;
+      changeDetection.detectChanges();
+    });
     http.get('public/version.json')
       .subscribe((res: Response) => {
         this.version = res.json().version;
       });
+
+    this._components.getComponents()
+      .then((comps) => {
+        this.components = comps;
+      });
+
+  }
+
+  ngOnDestroy(): any {
+    this._subscription.unsubscribe();
+  }
+
+  showMenu(event?) {
+    this._sidenav.show('menu');
   }
 
 }
@@ -69,7 +110,7 @@ let appProviders = [
   bind(LocationStrategy).toClass(HashLocationStrategy)
 ];
 
-if(window.location.href.indexOf('github.com') !== -1){
+if (window.location.href.indexOf('github.com') !== -1) {
   enableProdMode();
 }
 else {

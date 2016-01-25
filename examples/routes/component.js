@@ -15,10 +15,13 @@ var example_1 = require("../example");
 var router_2 = require("angular2/router");
 var navigation_1 = require("../services/navigation");
 var dom_adapter_1 = require("angular2/src/platform/dom/dom_adapter");
+var sidenav_service_1 = require("../../ng2-material/components/sidenav/sidenav_service");
+var async_1 = require("angular2/src/facade/async");
 var ComponentPage = (function () {
-    function ComponentPage(_components, _navigation, _routeParams) {
+    function ComponentPage(_components, _navigation, _sidenav, _routeParams) {
         this._components = _components;
         this._navigation = _navigation;
+        this._sidenav = _sidenav;
         this._routeParams = _routeParams;
         this.value = {};
         this.next = null;
@@ -26,6 +29,9 @@ var ComponentPage = (function () {
     }
     ComponentPage.prototype.ngOnInit = function () {
         var _this = this;
+        async_1.TimerWrapper.setTimeout(function () {
+            _this._sidenav.hide('menu');
+        }, 0);
         var id = this._routeParams.get('id');
         this._components.getComponent(id).then(function (c) {
             _this.value = c;
@@ -45,7 +51,7 @@ var ComponentPage = (function () {
             template: "\n    <h1 class=\"examples-title\">Examples</h1>\n    <p class=\"examples-intro\" *ngIf=\"value.readme\" [innerHtml]=\"value.readme\"></p>\n\n    <example *ngFor=\"#demo of value.examples\" [model]=\"demo\"></example>",
             directives: [example_1.default, router_2.ROUTER_DIRECTIVES, all_1.MATERIAL_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [components_1.ComponentsService, navigation_1.NavigationService, router_1.RouteParams])
+        __metadata('design:paramtypes', [components_1.ComponentsService, navigation_1.NavigationService, sidenav_service_1.SidenavService, router_1.RouteParams])
     ], ComponentPage);
     return ComponentPage;
 })();

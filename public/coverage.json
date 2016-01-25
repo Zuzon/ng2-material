@@ -1,8 +1,8 @@
 [
   {
     "lines": {
-      "found": 42,
-      "hit": 42,
+      "found": 44,
+      "hit": 44,
       "percent": 100
     },
     "functions": {
@@ -55,14 +55,14 @@
   },
   {
     "lines": {
-      "found": 71,
-      "hit": 66,
-      "percent": 93
+      "found": 82,
+      "hit": 77,
+      "percent": 94
     },
     "functions": {
-      "hit": 18,
-      "found": 20,
-      "percent": 90
+      "hit": 20,
+      "found": 22,
+      "percent": 91
     },
     "branches": {
       "hit": 11,
@@ -73,14 +73,14 @@
   },
   {
     "lines": {
-      "found": 29,
-      "hit": 29,
-      "percent": 100
+      "found": 31,
+      "hit": 30,
+      "percent": 97
     },
     "functions": {
       "hit": 6,
-      "found": 6,
-      "percent": 100
+      "found": 7,
+      "percent": 86
     },
     "branches": {
       "hit": 6,
@@ -110,18 +110,18 @@
   {
     "lines": {
       "found": 25,
-      "hit": 17,
-      "percent": 68
+      "hit": 14,
+      "percent": 56
     },
     "functions": {
-      "hit": 6,
+      "hit": 5,
       "found": 8,
-      "percent": 75
+      "percent": 63
     },
     "branches": {
-      "hit": 3,
+      "hit": 2,
       "found": 8,
-      "percent": 38
+      "percent": 25
     },
     "file": "ng2-material/core/util/util.ts"
   },
@@ -217,19 +217,19 @@
   },
   {
     "lines": {
-      "found": 47,
-      "hit": 47,
-      "percent": 100
+      "found": 63,
+      "hit": 60,
+      "percent": 95
     },
     "functions": {
       "hit": 8,
-      "found": 8,
-      "percent": 100
+      "found": 9,
+      "percent": 89
     },
     "branches": {
-      "hit": 9,
-      "found": 9,
-      "percent": 100
+      "hit": 31,
+      "found": 33,
+      "percent": 94
     },
     "file": "ng2-material/components/backdrop/backdrop.ts"
   },
@@ -289,27 +289,27 @@
   },
   {
     "lines": {
-      "found": 81,
-      "hit": 51,
-      "percent": 63
+      "found": 69,
+      "hit": 47,
+      "percent": 68
     },
     "functions": {
       "hit": 9,
-      "found": 29,
-      "percent": 31
+      "found": 25,
+      "percent": 36
     },
     "branches": {
       "hit": 8,
-      "found": 28,
-      "percent": 29
+      "found": 20,
+      "percent": 40
     },
     "file": "ng2-material/components/form/validators.ts"
   },
   {
     "lines": {
-      "found": 58,
-      "hit": 34,
-      "percent": 59
+      "found": 59,
+      "hit": 32,
+      "percent": 54
     },
     "functions": {
       "hit": 7,
@@ -317,26 +317,26 @@
       "percent": 78
     },
     "branches": {
-      "hit": 6,
+      "hit": 5,
       "found": 22,
-      "percent": 27
+      "percent": 23
     },
     "file": "ng2-material/components/form/messages.ts"
   },
   {
     "lines": {
-      "found": 45,
-      "hit": 38,
-      "percent": 84
+      "found": 42,
+      "hit": 36,
+      "percent": 86
     },
     "functions": {
-      "hit": 8,
-      "found": 12,
-      "percent": 67
+      "hit": 7,
+      "found": 11,
+      "percent": 64
     },
     "branches": {
-      "hit": 4,
-      "found": 8,
+      "hit": 3,
+      "found": 6,
       "percent": 50
     },
     "file": "ng2-material/components/input/input.ts"
@@ -361,8 +361,8 @@
   },
   {
     "lines": {
-      "found": 39,
-      "hit": 39,
+      "found": 38,
+      "hit": 38,
       "percent": 100
     },
     "functions": {
@@ -371,21 +371,21 @@
       "percent": 100
     },
     "branches": {
-      "hit": 14,
-      "found": 14,
+      "hit": 12,
+      "found": 12,
       "percent": 100
     },
     "file": "ng2-material/components/progress_linear/progress_linear.ts"
   },
   {
     "lines": {
-      "found": 48,
-      "hit": 47,
+      "found": 47,
+      "hit": 46,
       "percent": 98
     },
     "functions": {
-      "hit": 12,
-      "found": 13,
+      "hit": 11,
+      "found": 12,
       "percent": 92
     },
     "branches": {
@@ -397,8 +397,8 @@
   },
   {
     "lines": {
-      "found": 96,
-      "hit": 92,
+      "found": 92,
+      "hit": 88,
       "percent": 96
     },
     "functions": {
@@ -407,22 +407,22 @@
       "percent": 92
     },
     "branches": {
-      "hit": 28,
-      "found": 31,
+      "hit": 26,
+      "found": 29,
       "percent": 90
     },
     "file": "ng2-material/components/peekaboo/peekaboo.ts"
   },
   {
     "lines": {
-      "found": 49,
-      "hit": 45,
-      "percent": 92
+      "found": 51,
+      "hit": 46,
+      "percent": 90
     },
     "functions": {
       "hit": 8,
-      "found": 10,
-      "percent": 80
+      "found": 11,
+      "percent": 73
     },
     "branches": {
       "hit": 5,
@@ -469,13 +469,13 @@
   },
   {
     "lines": {
-      "found": 7,
-      "hit": 7,
+      "found": 5,
+      "hit": 5,
       "percent": 100
     },
     "functions": {
-      "hit": 2,
-      "found": 2,
+      "hit": 1,
+      "found": 1,
       "percent": 100
     },
     "branches": {
@@ -505,32 +505,68 @@
   },
   {
     "lines": {
-      "found": 70,
-      "hit": 63,
-      "percent": 90
+      "found": 69,
+      "hit": 57,
+      "percent": 83
     },
     "functions": {
-      "hit": 11,
-      "found": 13,
-      "percent": 85
+      "hit": 13,
+      "found": 20,
+      "percent": 65
     },
     "branches": {
-      "hit": 12,
+      "hit": 5,
+      "found": 8,
+      "percent": 63
+    },
+    "file": "ng2-material/components/sidenav/sidenav.ts"
+  },
+  {
+    "lines": {
+      "found": 23,
+      "hit": 23,
+      "percent": 100
+    },
+    "functions": {
+      "hit": 8,
+      "found": 8,
+      "percent": 100
+    },
+    "branches": {
+      "hit": 6,
+      "found": 6,
+      "percent": 100
+    },
+    "file": "ng2-material/components/sidenav/sidenav_service.ts"
+  },
+  {
+    "lines": {
+      "found": 70,
+      "hit": 44,
+      "percent": 63
+    },
+    "functions": {
+      "hit": 8,
+      "found": 13,
+      "percent": 62
+    },
+    "branches": {
+      "hit": 5,
       "found": 20,
-      "percent": 60
+      "percent": 25
     },
     "file": "ng2-material/components/toolbar/toolbar.ts"
   },
   {
     "lines": {
-      "found": 58,
-      "hit": 58,
-      "percent": 100
+      "found": 55,
+      "hit": 53,
+      "percent": 96
     },
     "functions": {
-      "hit": 15,
+      "hit": 13,
       "found": 15,
-      "percent": 100
+      "percent": 87
     },
     "branches": {
       "hit": 16,
